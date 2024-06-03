@@ -1,3 +1,9 @@
+// Obtener elementos del DOM
+const loginBtn = document.getElementById('loginBtn');
+const registerBtn = document.getElementById('registerBtn');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
@@ -16,12 +22,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
-
-// Obtener elementos del DOM
-const loginBtn = document.getElementById('loginBtn');
-const registerBtn = document.getElementById('registerBtn');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
 
 // Función para iniciar sesión
 loginBtn.addEventListener('click', () => {
