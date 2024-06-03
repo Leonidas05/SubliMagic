@@ -5,7 +5,7 @@ const firebaseConfig = {
     projectId: "sublimagic-b1bc1",
     storageBucket: "gs://sublimagic-b1bc1.appspot.com",
     messagingSenderId: "718965349114",
-    appId: "YOUR_APP_ID"
+    appId: "1:718965349114:web:29469547e748e65048c743"
   };
   
   // Inicializar Firebase
