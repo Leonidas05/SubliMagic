@@ -58,3 +58,8 @@ registerBtn.addEventListener('click', () => {
       console.error(errorMessage);
     });
 });
+
+document.querySelector('.admin-text').addEventListener('click', () => {
+  // Redirigir a otra página HTML
+  window.location.href = "MP.html";
+});
