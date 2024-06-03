@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Productos</title>
+    <link rel="stylesheet" href="css/productos.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="hm-header">
+        <!-- Contenido del header del index.html -->
+        <div class="container">
+            <!-- Aquí va el contenido del header del index.html -->
+        </div>
+    </header>
+
+    <!-- Barra de búsqueda principal -->
+    <div class="search-bar">
+        <div class="container">
+            <form action="#" method="GET">
+                <input type="text" name="search" placeholder="Buscar productos...">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Búsqueda rápida -->
+    <div class="quick-search">
+        <div class="container">
+            <form action="#" method="GET">
+                <input type="text" name="price_min" placeholder="Precio mínimo">
+                <input type="text" name="price_max" placeholder="Precio máximo">
+                <select name="category">
+                    <option value="categoria1">Categoría 1</option>
+                    <option value="categoria2">Categoría 2</option>
+                    <option value="categoria3">Categoría 3</option>
+                    <!-- Agregar más opciones según sea necesario -->
+                </select>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenido de la página de productos -->
+    <div class="container_productos">
+        <!-- Los productos se cargarán aquí dinámicamente desde Firebase -->
+    </div>
+
+    <script src="js/productos.js"></script>
+</body>
+</html>

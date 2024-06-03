@@ -1,0 +1,111 @@
+/* Estilos para la página de productos */
+
+/* Estilos para la barra de búsqueda principal */
+.search-bar {
+    background-color: #f2f2f2;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.search-bar form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para la búsqueda rápida */
+.quick-search {
+    background-color: #e6e6e6;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.quick-search form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quick-search input[type="text"],
+.quick-search select {
+    padding: 8px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.quick-search button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.quick-search button:hover {
+    background-color: #45a049;
+}
+
+.container_productos {
+    margin: 0 auto; /* Centrar horizontalmente */
+    width: 90%; /* Ancho del contenedor de productos */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Estilos para los productos */
+.producto {
+    width: 21%; /* Ajustar según necesidad */
+    margin: 1%; /* Ajustar según necesidad */
+    float: left;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-item {
+    width: calc(25% - 2rem*3/4); /* Ancho de cada producto */
+    margin-bottom: 2rem;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+}
+
+.producto:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.producto h3 {
+    font-size: 16px;
+}
+
+.producto p {
+    font-size: 14px;
+    color: #666;
+}
