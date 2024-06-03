@@ -1,11 +1,12 @@
 // Configuración de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDfINjqBM_lnsWRnzaNNYQgvtj3Pk9nML0",
-    authDomain: "sublimagic-b1bc1.web.app",
+    authDomain: "sublimagic-b1bc1.firebaseapp.com",
     projectId: "sublimagic-b1bc1",
-    storageBucket: "gs://sublimagic-b1bc1.appspot.com",
+    storageBucket: "sublimagic-b1bc1.appspot.com",
     messagingSenderId: "718965349114",
-    appId: "1:718965349114:web:29469547e748e65048c743"
+    appId: "1:718965349114:web:29469547e748e65048c743",
+    measurementId: "G-N5VWLQRR80"
   };
   
   // Inicializar Firebase
