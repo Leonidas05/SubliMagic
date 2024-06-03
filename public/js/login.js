@@ -1,3 +1,5 @@
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // Configuración de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDfINjqBM_lnsWRnzaNNYQgvtj3Pk9nML0",
@@ -10,7 +12,8 @@ const firebaseConfig = {
   };
   
   // Inicializar Firebase
-  firebase.initializeApp(firebaseConfig);
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
   
   // Obtener elementos del DOM
   const loginBtn = document.getElementById('loginBtn');
