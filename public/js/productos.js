@@ -1,29 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const container = document.querySelector('.container_productos'); // Corregir la clase seleccionada
+    const container = document.querySelector('.container_productos');
 
-    // Simulando la carga de productos desde Firebase
-    const productos = [
-        { nombre: 'Producto 1', imagen: 'img/producto1.jpg', precio: '100', descripcion: 'Descripción del Producto 1' },
-        { nombre: 'Producto 2', imagen: 'img/producto2.jpg', precio: '150', descripcion: 'Descripción del Producto 2' },
-        { nombre: 'Producto 3', imagen: 'img/producto3.jpg', precio: '200', descripcion: 'Descripción del Producto 3' },
-        { nombre: 'Producto 4', imagen: 'img/producto4.jpg', precio: '120', descripcion: 'Descripción del Producto 4' },
-        { nombre: 'Producto 5', imagen: 'img/producto5.jpg', precio: '180', descripcion: 'Descripción del Producto 5' },
-        // Agregar más productos según sea necesario
-    ];
+    // Obtener referencia a la colección "Productos" en Firebase
+    const productosRef = firebase.firestore().collection('Productos');
 
-    productos.forEach(producto => {
-        const productoHTML = `
-            <div class="producto" 
-                data-nombre="${producto.nombre}" 
-                data-descripcion="${producto.descripcion}"
-                data-precio="${producto.precio}" 
-                data-imagen="${producto.imagen}">
-                <img src="${producto.imagen}" alt="${producto.nombre}">
-                <h3>${producto.nombre}</h3>
-                <p>Precio: S/ ${producto.precio}</p>
-            </div>
-        `;
-        container.innerHTML += productoHTML;
+    // Realizar consulta a la colección "Productos"
+    productosRef.get().then(snapshot => {
+        snapshot.forEach(doc => {
+            const producto = doc.data();
+            // Crear elemento visual para el producto
+            const productoHTML = `
+                <div class="producto">
+                    <img src="${producto.Img}" alt="${producto.Nombre}">
+                    <h3>${producto.Nombre}</h3>
+                    <p>Precio: S/ ${producto.Precio}</p>
+                    <p>Categoría: ${producto.Categoria}</p>
+                </div>
+            `;
+            container.innerHTML += productoHTML;
+        });
+    }).catch(error => {
+        console.error('Error al obtener productos:', error);
     });
 
     // Ahora agregamos el evento de clic a cada producto
