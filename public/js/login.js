@@ -1,17 +1,3 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyDfINjqBM_lnsWRnzaNNYQgvtj3Pk9nML0",
-  authDomain: "sublimagic-b1bc1.firebaseapp.com",
-  projectId: "sublimagic-b1bc1",
-  storageBucket: "sublimagic-b1bc1.appspot.com",
-  messagingSenderId: "718965349114",
-  appId: "1:718965349114:web:29469547e748e65048c743",
-  measurementId: "G-N5VWLQRR80"
-};
-  
-// Inicializar Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
 // Obtener elementos del DOM
 const loginBtn = document.getElementById('loginBtn');
 const registerBtn = document.getElementById('registerBtn');
