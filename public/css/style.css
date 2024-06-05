@@ -9,23 +9,10 @@ html {
     font-size: 62.5%;
 }
 
-.container {
-    background-color: #f5f3f3;
-}
 
 .red_price{
     text-color: #FF0000;
     color: #FF0000;
-}
-
-.container nav {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 15px;
-    background-color: #fff;
-    margin-bottom: 30px;
-    color: #333;
 }
 
 .nav-card {
