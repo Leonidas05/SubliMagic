@@ -1,49 +1,51 @@
-// Obtener elementos del DOM
-const loginBtn = document.getElementById('loginBtn');
-const registerBtn = document.getElementById('registerBtn');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const adminText = document.querySelector('.admin-text');
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtener elementos del DOM
+  const loginBtn = document.getElementById('loginBtn');
+  const registerBtn = document.getElementById('registerBtn');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const adminText = document.querySelector('.admin-text');
 
-// Agregar un evento de clic al elemento de texto "Admin"
-adminText.addEventListener('click', redirectToAdminPage);
+  // Agregar un evento de clic al botón "Admin"
+  document.getElementById('BComenzar').addEventListener('click', redirectToAdminPage);
 
-// Función para redirigir a la página de administrador
-function redirectToAdminPage(){
-  // Redirigir a otra página HTML
-  window.location.href = "MP.html";
-}
-
-// Función para iniciar sesión
-loginBtn.addEventListener('click', () => {
-  const email = emailInput.value;
-  const password = passwordInput.value;
-
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Login exitoso, redirigir a otra página
+  // Función para redirigir a la página de administrador
+  function redirectToAdminPage() {
+      // Redirigir a otra página HTML
       window.location.href = "MP.html";
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorMessage = error.message;
-      console.error(errorMessage);
-    });
-});
+  }
 
-// Función para registrar
-registerBtn.addEventListener('click', () => {
-  const email = emailInput.value;
-  const password = passwordInput.value;
+  // Función para iniciar sesión
+  loginBtn.addEventListener('click', () => {
+      const email = emailInput.value;
+      const password = passwordInput.value;
 
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Registro exitoso
-      console.log('Usuario registrado');
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorMessage = error.message;
-      console.error(errorMessage);
-    });
+      firebase.default.auth().signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+              // Login exitoso, redirigir a otra página
+              window.location.href = "MP.html";
+          })
+          .catch((error) => {
+              // Handle Errors here.
+              const errorMessage = error.message;
+              console.error(errorMessage);
+          });
+  });
+
+  // Función para registrar
+  registerBtn.addEventListener('click', () => {
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
+      firebase.default.auth().createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+              // Registro exitoso
+              console.log('Usuario registrado');
+          })
+          .catch((error) => {
+              // Handle Errors here.
+              const errorMessage = error.message;
+              console.error(errorMessage);
+          });
+  });
 });
