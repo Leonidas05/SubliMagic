@@ -1,12 +1,6 @@
-// Obtener elementos del DOM
-const loginBtn = document.getElementById('loginBtn');
-const registerBtn = document.getElementById('registerBtn');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+
 // Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDfINjqBM_lnsWRnzaNNYQgvtj3Pk9nML0",
@@ -20,8 +14,23 @@ const firebaseConfig = {
   
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth();
+
+// Obtener elementos del DOM
+const loginBtn = document.getElementById('loginBtn');
+const registerBtn = document.getElementById('registerBtn');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const adminText = document.querySelector('.admin-text');
+
+// Agregar un evento de clic al elemento de texto "Admin"
+adminText.addEventListener('click', redirectToAdminPage);
+
+// Función para redirigir a la página de administrador
+function redirectToAdminPage() {
+  // Redirigir a otra página HTML
+  window.location.href = "MP.html";
+}
 
 // Función para iniciar sesión
 loginBtn.addEventListener('click', () => {
@@ -35,7 +44,6 @@ loginBtn.addEventListener('click', () => {
     })
     .catch((error) => {
       // Handle Errors here.
-      const errorCode = error.code;
       const errorMessage = error.message;
       console.error(errorMessage);
     });
@@ -53,13 +61,7 @@ registerBtn.addEventListener('click', () => {
     })
     .catch((error) => {
       // Handle Errors here.
-      const errorCode = error.code;
       const errorMessage = error.message;
       console.error(errorMessage);
     });
-});
-
-document.querySelector('.admin-text').addEventListener('click', () => {
-  // Redirigir a otra página HTML
-  window.location.href = "MP.html";
 });

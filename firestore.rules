@@ -1,0 +1,15 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Permite leer a cualquier usuario
+    match /{document=**} {
+      allow read;
+    }
+    
+    // Permite escribir si el usuario está autenticado y su UID coincide con el UID del documento
+    match /{document=**} {
+      allow write: if request.auth.uid == resource.data.uid;
+    }
+  }
+}
