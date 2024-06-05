@@ -1,7 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-
-// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDfINjqBM_lnsWRnzaNNYQgvtj3Pk9nML0",
   authDomain: "sublimagic-b1bc1.firebaseapp.com",
@@ -13,8 +9,8 @@ const firebaseConfig = {
 };
   
 // Inicializar Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
 // Obtener elementos del DOM
 const loginBtn = document.getElementById('loginBtn');
@@ -37,7 +33,7 @@ loginBtn.addEventListener('click', () => {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  signInWithEmailAndPassword(auth, email, password)
+  firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Login exitoso, redirigir a otra página
       window.location.href = "MP.html";
@@ -54,7 +50,7 @@ registerBtn.addEventListener('click', () => {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  createUserWithEmailAndPassword(auth, email, password)
+  firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Registro exitoso
       console.log('Usuario registrado');
