@@ -1,59 +1,68 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el UID del parámetro de consulta en la URL
+    const params = new URLSearchParams(window.location.search);
+    const uid = params.get('uid');
 
-const headerMenu=document.querySelector('.hm-header');
+    // Ahora puedes usar el UID como necesites
+    console.log('UID del usuario:', uid);
+    // Por ejemplo, puedes usarlo para mostrar contenido personalizado o realizar consultas específicas a la base de datos
 
-console.log(headerMenu.offsetTop);
+    const headerMenu = document.querySelector('.hm-header');
 
-window.addEventListener('scroll',()=>{
-    if(window.pageYOffset > 80){
-        headerMenu.classList.add('header-fixed');
-    }else{
-        headerMenu.classList.remove('header-fixed');
+    console.log(headerMenu.offsetTop);
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 80) {
+            headerMenu.classList.add('header-fixed');
+        } else {
+            headerMenu.classList.remove('header-fixed');
+        }
+    });
+
+    /*=========================================
+        Tabs
+    ==========================================*/
+    if (document.querySelector('.hm-tabs')) {
+
+        const tabLinks = document.querySelectorAll('.hm-tab-link');
+        const tabsContent = document.querySelectorAll('.tabs-content');
+
+        tabLinks[0].classList.add('active');
+
+        if (document.querySelector('.tabs-content')) {
+            tabsContent[0].classList.add('tab-active');
+        }
+
+
+        for (let i = 0; i < tabLinks.length; i++) {
+
+            tabLinks[i].addEventListener('click', () => {
+
+
+                tabLinks.forEach((tab) => tab.classList.remove('active'));
+                tabLinks[i].classList.add('active');
+
+                tabsContent.forEach((tabCont) => tabCont.classList.remove('tab-active'));
+                tabsContent[i].classList.add('tab-active');
+
+            });
+
+        }
+
     }
-})
 
-/*=========================================
-    Tabs
-==========================================*/
-if(document.querySelector('.hm-tabs')){
+    /*=========================================
+        MENU
+    ==========================================*/
 
-    const tabLinks=document.querySelectorAll('.hm-tab-link');
-    const tabsContent=document.querySelectorAll('.tabs-content');
+    const menu = document.querySelector('.icon-menu');
+    const menuClose = document.querySelector('.cerrar-menu');
 
-    tabLinks[0].classList.add('active');
+    menu.addEventListener('click', () => {
+        document.querySelector('.header-menu-movil').classList.add('active');
+    });
 
-    if(document.querySelector('.tabs-content')){
-        tabsContent[0].classList.add('tab-active');
-    }
-
-
-    for (let i = 0; i < tabLinks.length; i++) {
-
-        tabLinks[i].addEventListener('click',()=>{
-
-
-            tabLinks.forEach((tab) => tab.classList.remove('active'));
-            tabLinks[i].classList.add('active');
-
-            tabsContent.forEach((tabCont) => tabCont.classList.remove('tab-active'));
-            tabsContent[i].classList.add('tab-active');
-
-        });
-
-    }
-
-}
-
-/*=========================================
-    MENU
-==========================================*/
-
-const menu=document.querySelector('.icon-menu');
-const menuClose=document.querySelector('.cerrar-menu');
-
-menu.addEventListener('click',()=>{
-    document.querySelector('.header-menu-movil').classList.add('active');
-})
-
-menuClose.addEventListener('click',()=>{
-    document.querySelector('.header-menu-movil').classList.remove('active');
-})
+    menuClose.addEventListener('click', () => {
+        document.querySelector('.header-menu-movil').classList.remove('active');
+    });
+});
