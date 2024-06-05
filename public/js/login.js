@@ -23,9 +23,9 @@ const adminText = document.querySelector('.admin-text');
 adminText.addEventListener('click', redirectToAdminPage);
 
 // Función para redirigir a la página de administrador
-function redirectToAdminPage() {
+function redirectToAdminPage(){
   // Redirigir a otra página HTML
-  window.location.href = "MP.html";
+  window.location.href = "public\MP.html";
 }
 
 // Función para iniciar sesión
