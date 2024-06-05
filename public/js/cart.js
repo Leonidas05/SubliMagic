@@ -2,33 +2,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartItemsContainer = document.querySelector('.cart-items');
     const cartTotalElement = document.getElementById('cart-total');
 
-    // Simulando la carga de elementos del carrito desde Firebase
-    const cartItems = [
-        { nombre: 'Producto 1', imagen: 'img/producto1.jpg', precio: 100, cantidad: 1 },
-        { nombre: 'Producto 2', imagen: 'img/producto2.jpg', precio: 150, cantidad: 2 },
-        { nombre: 'Producto 3', imagen: 'img/producto3.jpg', precio: 200, cantidad: 1 },
-        // Agregar más elementos del carrito según sea necesario
-    ];
+    const cartRef = firebase.firestore().collection('Carrito');
 
-    let total = 0;
+    // Obtener los elementos del carrito desde Firebase
+    cartRef.doc('C0000000001').get().then((doc) => {
+        if (doc.exists) {
+            const cartItems = doc.data().Articulos;
+            let total = 0;
 
-    // Generar el HTML para cada elemento del carrito
-    cartItems.forEach(item => {
-        const subtotal = item.precio * item.cantidad;
-        total += subtotal;
+            // Generar el HTML para cada elemento del carrito
+            cartItems.forEach(item => {
+                const subtotal = item.Precio * item.Cantidad;
+                total += subtotal;
 
-        const cartItemHTML = `
-            <div class="cart-item">
-                <img src="${item.imagen}" alt="${item.nombre}">
-                <span>${item.nombre}</span>
-                <span>Cantidad: ${item.cantidad}</span>
-                <span>Precio: S/ ${item.precio}</span>
-                <span>Subtotal: S/ ${subtotal}</span>
-            </div>
-        `;
-        cartItemsContainer.innerHTML += cartItemHTML;
+                const cartItemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.Img}" alt="${item.Nombre}">
+                        <span>${item.Nombre}</span>
+                        <span>Cantidad: ${item.Cantidad}</span>
+                        <span>Precio: S/ ${item.Precio}</span>
+                        <span>Subtotal: S/ ${subtotal}</span>
+                    </div>
+                `;
+                cartItemsContainer.innerHTML += cartItemHTML;
+            });
+
+            // Mostrar el total en el carrito
+            cartTotalElement.textContent = `S/ ${total.toFixed(2)}`;
+        } else {
+            console.log('No se encontraron elementos en el carrito');
+        }
+    }).catch((error) => {
+        console.error('Error al obtener elementos del carrito:', error);
     });
-
-    // Mostrar el total en el carrito
-    cartTotalElement.textContent = `S/ ${total.toFixed(2)}`;
 });
