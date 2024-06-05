@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const uid = params.get('uid');
+
+    // Ahora puedes usar el UID como necesites
+    console.log('UID del usuario:', uid);
+
     const container = document.querySelector('.container_productos');
     const searchBar = document.querySelector('.search-bar form');
 
