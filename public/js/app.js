@@ -2,10 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Obtener el UID del parámetro de consulta en la URL
     const params = new URLSearchParams(window.location.search);
     const uid = params.get('uid');
+    
+    const enlaceProductos = document.querySelector('.hm-menu li:nth-child(1) a');
+
+    // Reemplazar el valor de uid en el atributo href del enlace
+    let hrefActual = enlaceProductos.getAttribute('href');
+    hrefActual = hrefActual.replace(/uid=\w+/, `uid=${uid}`);
+    enlaceProductos.setAttribute('href', hrefActual);
 
     // Ahora puedes usar el UID como necesites
     console.log('UID del usuario:', uid);
-    // Por ejemplo, puedes usarlo para mostrar contenido personalizado o realizar consultas específicas a la base de datos
 
     const headerMenu = document.querySelector('.hm-header');
 
