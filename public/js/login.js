@@ -21,19 +21,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const password = passwordInput.value;
 
     firebase.default.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Login exitoso, obtener el UID del usuario
-            const user = userCredential.user;
-            const uid = user.uid;
+    .then((userCredential) => {
+        // Login exitoso, obtener el UID del usuario
+        const user = userCredential.user;
+        const uid = user.uid;
 
-            // Redirigir a MP.html con el UID como parámetro de consulta
-            window.location.href = `MP.html?uid=${uid}`;
-        })
-        .catch((error) => {
-            // Handle Errors here.
-            const errorMessage = error.message;
-            console.error(errorMessage);
-        });
+        // Generar la URL con el UID como parámetro de consulta para productos.html
+        const productosURL = `productos.html?uid=${uid}`;
+
+        // Redirigir a MP.html con el UID como parámetro de consulta
+        window.location.href = `MP.html?uid=${uid}`;
+    })
+    .catch((error) => {
+        const errorMessage = error.message;
+        console.error(errorMessage);
+    });
 });
 
   // Función para registrar
